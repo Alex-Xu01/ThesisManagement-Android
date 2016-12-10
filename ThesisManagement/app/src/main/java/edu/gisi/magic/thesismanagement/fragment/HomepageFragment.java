@@ -2,13 +2,20 @@ package edu.gisi.magic.thesismanagement.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
 import edu.gisi.magic.thesismanagement.R;
+import edu.gisi.magic.thesismanagement.config.Urls;
+import edu.gisi.magic.thesismanagement.entity.GeneralData;
 import edu.gisi.magic.thesismanagement.view.RingView;
+import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
 /**
  * 首页内容
@@ -18,12 +25,17 @@ public class HomepageFragment extends Fragment {
     private RingView mRingView;
     private TextView passedPaper;
     private TextView canBeChoosePaper;
+    private float pecent;
+    private int Passed, CanBeChoose;
+
+    public static final String TAG = "HomepageFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_homepage, null);
         this.initView(view);
-        this.setContent();
+        setContent();
+
         return view;
     }
 
@@ -34,14 +46,24 @@ public class HomepageFragment extends Fragment {
     }
 
     public void setContent() {
-        float pecent;
-        int passed, canBeChoose;
-        passed = 20;
-        canBeChoose = 14;
-        pecent = canBeChoose / (float) 1.0 / passed * 100;
-        mRingView.setAngle(pecent);
-        mRingView.setText(pecent+" %");
-        passedPaper.setText(getString(R.string.font_papers, String.valueOf(passed)));
-        canBeChoosePaper.setText(getString(R.string.font_papers, String.valueOf(canBeChoose)));
+
+        VolleyManager.newInstance().GsonGetRequest(TAG, Urls.URL_GENERAL, GeneralData.class,
+                new Response.Listener<GeneralData>() {
+                    @Override
+                    public void onResponse(GeneralData data) {
+                        Passed = data.getPassed();
+                        CanBeChoose = data.getCanBeChoose();
+                        pecent = CanBeChoose / (float) 1.0 / Passed * 100;
+                        mRingView.setAngle(pecent);
+                        mRingView.setText(pecent + " %");
+                        passedPaper.setText(getString(R.string.font_papers, String.valueOf(Passed)));
+                        canBeChoosePaper.setText(getString(R.string.font_papers, String.valueOf(CanBeChoose)));
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, error.getMessage(), error);
+                    }
+                });
     }
 }

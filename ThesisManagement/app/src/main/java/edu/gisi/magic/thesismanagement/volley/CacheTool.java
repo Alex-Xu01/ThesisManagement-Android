@@ -1,4 +1,4 @@
-package edu.gisi.magic.thesismanagement.tools;
+package edu.gisi.magic.thesismanagement.volley;
 
 import android.app.Activity;
 import android.content.Context;

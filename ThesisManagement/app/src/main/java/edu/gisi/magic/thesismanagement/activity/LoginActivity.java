@@ -3,21 +3,24 @@ package edu.gisi.magic.thesismanagement.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 
 import edu.gisi.magic.thesismanagement.R;
-
-import edu.gisi.magic.thesismanagement.tools.CacheTool;
-import edu.gisi.magic.thesismanagement.tools.NetTool;
-import edu.gisi.magic.thesismanagement.tools.UrlTool;
+import edu.gisi.magic.thesismanagement.config.Urls;
+import edu.gisi.magic.thesismanagement.entity.UserInfo;
+import edu.gisi.magic.thesismanagement.volley.CacheTool;
+import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,60 +37,35 @@ public class LoginActivity extends Activity {
     private Button registerButton;
     private EditText usernameEditText;
     private EditText passwordEditText;
+    private String name;
+    private String pwd;
+
+    public static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        NetTool.setContext(getApplicationContext());
-        CacheTool.setContext(getApplicationContext());
-
         setContentView(R.layout.activity_login);
+        CacheTool.setContext(getApplicationContext());
+        initView();
+    }
 
-        this.loginButton = (Button) this.findViewById(R.id.loginButton);
-        this.registerButton = (Button) this.findViewById(R.id.registerButton);
-        this.usernameEditText = (EditText) this.findViewById(R.id.usernameEditText);
-        this.passwordEditText = (EditText) this.findViewById(R.id.passwordEditText);
+    private void initView() {
+        loginButton = (Button) findViewById(R.id.loginButton);
+        registerButton = (Button) findViewById(R.id.registerButton);
+        usernameEditText = (EditText) findViewById(R.id.usernameEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
-        this.loginButton.setOnClickListener(new OnClickListener() {
+        loginButton.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-                Map<String, String> data = new HashMap<>();
-                data.put("username", "admin");
-                data.put("password", "111111");
-                JSONObject jsonObject = new JSONObject(data);
-//				data.put("username", usernameEditText.getText().toString());
-//				data.put("password", passwordEditText.getText().toString());
-				NetTool.post(UrlTool.URL_USER_LOGIN, new Listener<String>() {
-					@Override
-					public void onResponse(String arg0) {
-						try {
-							if (new JSONObject(arg0).getBoolean("result")) {
-								Toast.makeText(getApplicationContext(), "登录成功，欢迎您回来！", Toast.LENGTH_LONG).show();
-								CacheTool.put("username", usernameEditText.getText().toString());
-								CacheTool.put("userId", new JSONObject(arg0).getLong("id") + "");
-								Intent intent = new Intent();
-								intent.setClass(LoginActivity.this, MainActivity.class);
-								startActivity(intent);
-								finish();
-							} else {
-								Toast.makeText(getApplicationContext(), "登录失败，用户名或密码错误", Toast.LENGTH_LONG).show();
-							}
-						} catch (JSONException e) {
-							Toast.makeText(getApplicationContext(), "登录失败，服务器返回数据异常", Toast.LENGTH_LONG).show();
-							e.printStackTrace();
-						}
-					}
-				}, new ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError arg0) {
-						Toast.makeText(getApplicationContext(), "登录失败，无法连接到服务器", Toast.LENGTH_LONG).show();
-					}
-				}, data);
+            public void onClick(View v) {
+                if (checkNull()) {
+                    doLogin();
+                }
             }
         });
 
-        this.registerButton.setOnClickListener(new OnClickListener() {
+        registerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent();
@@ -97,4 +75,49 @@ public class LoginActivity extends Activity {
         });
     }
 
+    private boolean checkNull() {
+        name = usernameEditText.getText().toString().trim();
+        pwd = passwordEditText.getText().toString().trim();
+        if (TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "请输入用户名", Toast.LENGTH_SHORT).show();
+            usernameEditText.requestFocus();
+            return false;
+        }
+        if (TextUtils.isEmpty(pwd)) {
+            Toast.makeText(this, "请输入登录密码", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private void doLogin() {
+        final Map<String, String> map = new HashMap<>();
+//        map.put("username", usernameEditText.getText().toString());
+//        map.put("password", passwordEditText.getText().toString());
+        map.put("username","admin");
+        map.put("password","111111");
+        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_LOGIN, UserInfo.class,
+                new Response.Listener<UserInfo>() {
+                    @Override
+                    public void onResponse(UserInfo userInfo) {
+                        if (userInfo.isResult()) {
+                            Toast.makeText(getApplicationContext(), "登录成功，欢迎您回来！", Toast.LENGTH_LONG).show();
+                            CacheTool.put("username", name);
+                            CacheTool.put("userId", String.valueOf(userInfo.getId()));
+                            Intent intent = new Intent();
+                            intent.setClass(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "登录失败，用户名或密码错误", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "登录失败，无法连接到服务器", Toast.LENGTH_LONG).show();
+                        Log.e(TAG, error.getMessage(), error);
+                    }
+                });
+    }
 }
