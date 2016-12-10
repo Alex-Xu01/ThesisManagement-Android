@@ -1,12 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/product_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="#FFFFFF"
+    android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/rootListView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="45dp">
+
+        <RadioGroup
+            android:id="@+id/product_type_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/mythesis_radio"
+                style="@style/radio_btn_title_style"
+                android:background="@drawable/product_list_btn_left_select"
+                android:checked="true"
+                android:text="我的论文" />
+
+            <RadioButton
+                android:id="@+id/thesismanager_radio"
+                style="@style/radio_btn_title_style"
+                android:background="@drawable/product_list_btn_right_select"
+                android:text="论文列表" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_container_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
 
 </LinearLayout>

@@ -92,7 +92,7 @@ public class CreateOrderActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(CreateOrderActivity.this, SelectTypeActivity.class);
+//				intent.setClass(CreateOrderActivity.this, SelectThesisActivity.class);
 				startActivity(intent);
 			}
 		});

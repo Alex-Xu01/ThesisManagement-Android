@@ -4,6 +4,7 @@
     <!-- <item android:state_enabled="false" android:drawable="@drawable/bg_bottom_2_press"/>
     <item android:state_pressed="true" android:drawable="@drawable/bg_bottom_2_press"/>
     <item android:drawable="@drawable/bg_bottom_2"/> -->
-    <item android:drawable="@drawable/bg_bottom_2_press" android:state_checked="true"/>
-    <item android:drawable="@drawable/bg_bottom_2" android:state_checked="false"/>
+    <item android:drawable="@drawable/bg_bottom_2_press" android:state_checked="true" />
+    <item android:drawable="@drawable/bg_bottom_2_press" android:state_pressed="true" />
+    <item android:drawable="@drawable/bg_bottom_2" />
 </selector>

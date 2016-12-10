@@ -1,7 +1,7 @@
 package edu.gisi.magic.thesismanagement.tools;
 
 public class UrlTool {
-    private static final String IP = "http://192.168.23.5:8080";
+    private static final String IP = "http://192.168.1.9:8080";
     private static final String urlPre = IP + "/GTMS";
 
     public static final String URL_USER_REGISTER = createUrl("/user/register");

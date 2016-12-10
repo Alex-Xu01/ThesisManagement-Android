@@ -2,36 +2,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="#f5f4f9"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/topImageView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop" />
+        android:layout_marginTop="10dp"
+        android:layout_height="380dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
 
-    <Button
-        android:id="@+id/typeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="论文分类" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="概况"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:textStyle="normal|bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#E5E5E5" />
 
-    <Button
-        android:id="@+id/orderButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="论文预订" />
+        <edu.gisi.magic.thesismanagement.view.RingView
+            android:id="@+id/RingPecent"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
 
-    <Button
-        android:id="@+id/activityButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="优惠活动" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/introduceButton"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="论文介绍" />
+        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_tv_14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="已通过审核论文数：" />
+
+            <TextView
+                android:id="@+id/tv_passedPaper"
+                style="@style/text_tv_14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="1000篇" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_tv_14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="当前可选论文数：    " />
+
+            <TextView
+                android:id="@+id/tv_canBeChoosePaper"
+                style="@style/text_tv_14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="100篇" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
 </LinearLayout>

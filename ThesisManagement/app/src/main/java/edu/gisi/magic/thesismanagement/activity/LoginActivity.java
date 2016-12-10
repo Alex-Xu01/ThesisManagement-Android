@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+
 import edu.gisi.magic.thesismanagement.R;
 
 import edu.gisi.magic.thesismanagement.tools.CacheTool;
@@ -24,33 +25,39 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 登录页
+ */
 public class LoginActivity extends Activity {
 
-	private Button loginButton;
-	private Button registerButton;
-	private EditText usernameEditText;
-	private EditText passwordEditText;
+    private Button loginButton;
+    private Button registerButton;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		NetTool.setContext(getApplicationContext());
-		CacheTool.setContext(getApplicationContext());
+        NetTool.setContext(getApplicationContext());
+        CacheTool.setContext(getApplicationContext());
 
-		setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login);
 
-		this.loginButton = (Button) this.findViewById(R.id.loginButton);
-		this.registerButton = (Button) this.findViewById(R.id.registerButton);
-		this.usernameEditText = (EditText) this.findViewById(R.id.usernameEditText);
-		this.passwordEditText = (EditText) this.findViewById(R.id.passwordEditText);
+        this.loginButton = (Button) this.findViewById(R.id.loginButton);
+        this.registerButton = (Button) this.findViewById(R.id.registerButton);
+        this.usernameEditText = (EditText) this.findViewById(R.id.usernameEditText);
+        this.passwordEditText = (EditText) this.findViewById(R.id.passwordEditText);
 
-		this.loginButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Map<String, String> data = new HashMap<String, String>();
-				data.put("username", usernameEditText.getText().toString());
-				data.put("password", passwordEditText.getText().toString());
+        this.loginButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Map<String, String> data = new HashMap<>();
+                data.put("username", "admin");
+                data.put("password", "111111");
+                JSONObject jsonObject = new JSONObject(data);
+//				data.put("username", usernameEditText.getText().toString());
+//				data.put("password", passwordEditText.getText().toString());
 				NetTool.post(UrlTool.URL_USER_LOGIN, new Listener<String>() {
 					@Override
 					public void onResponse(String arg0) {
@@ -77,17 +84,17 @@ public class LoginActivity extends Activity {
 						Toast.makeText(getApplicationContext(), "登录失败，无法连接到服务器", Toast.LENGTH_LONG).show();
 					}
 				}, data);
-			}
-		});
+            }
+        });
 
-		this.registerButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				intent.setClass(LoginActivity.this, RegisterActivity.class);
-				startActivity(intent);
-			}
-		});
-	}
+        this.registerButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 }

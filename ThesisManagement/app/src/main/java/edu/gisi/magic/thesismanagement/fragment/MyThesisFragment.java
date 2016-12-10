@@ -1,26 +1,17 @@
-package edu.gisi.magic.thesismanagement.activity;
+package edu.gisi.magic.thesismanagement.fragment;
 
-import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.Response.Listener;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import edu.gisi.magic.thesismanagement.R;
-import edu.gisi.magic.thesismanagement.tools.CacheTool;
-import edu.gisi.magic.thesismanagement.tools.NetTool;
-import edu.gisi.magic.thesismanagement.tools.UrlTool;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,24 +19,82 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class SelectTypeActivity extends Activity {
+import edu.gisi.magic.thesismanagement.R;
+import edu.gisi.magic.thesismanagement.activity.MainActivity;
+//import edu.gisi.magic.thesismanagement.adapter.ThesisListViewAdapter;
+import edu.gisi.magic.thesismanagement.tools.NetTool;
+import edu.gisi.magic.thesismanagement.tools.UrlTool;
+import edu.gisi.magic.thesismanagement.view.RefreshLoadLayout;
+
+/**
+ * Created by AlexXu on 2016/12/10.
+ */
+
+public class MyThesisFragment extends Fragment {// implements SwipeRefreshLayout.OnRefreshListener
+
+//    private MainActivity activity;
+//    private View fragment;
+//    private ListView listView;
+//    private ThesisListViewAdapter adapter;
+//
+//    //    private RefreshLoadLayout refreshLoadLayout;
+//    private JSONArray typeData;
+//
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        super.onCreateView(inflater, container, savedInstanceState);
+//        fragment = inflater.inflate(R.layout.fragment_type_thesis, container, false);
+//        activity = (MainActivity) this.getActivity();
+//        initView(fragment);
+//        requestList();
+//        return fragment;
+//    }
+//
+//    private void initView(View view) {
+////        refreshLoadLayout = (RefreshLoadLayout) view.findViewById(R.id.list_view_container);
+////        refreshLoadLayout.setOnRefreshListener(this);
+//
+//        listView = (ListView) view.findViewById(R.id.list_view);
+//        adapter = new ThesisListViewAdapter(activity);
+//        listView.setAdapter(adapter);
+//
+//    }
+//
+//    private void requestList(){
+//
+//
+//    }
+//
+//    @Override
+//    public void onRefresh() {
+//        requestList();
+//    }
+
+
+/*
 
 	private JSONArray typeData;
-	private ListView rootListView;
+	private ListView listView;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_type);
-		this.rootListView = (ListView) this.findViewById(R.id.rootListView);
-		this.rootListView.setOnItemClickListener(new OnItemClickListener() {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment_type, null);
+		this.initView(view);
+		return view;
+	}
+
+	public void initView(View view) {
+		this.listView = (ListView) view.findViewById(R.id.list_View);
+		this.listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				try {
 					CreateOrderActivity.selected_hosue_name = typeData.getJSONObject(position).getString("name");
 					CreateOrderActivity.selected_house_id = typeData.getJSONObject(position).getLong("id") + "";
 					CreateOrderActivity.selected_house_money = typeData.getJSONObject(position).getInt("price") + "";
-					finish();
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), CreateOrderActivity.class);
+					startActivity(intent);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -61,16 +110,16 @@ public class SelectTypeActivity extends Activity {
 			public void onResponse(String arg0) {
 				try {
 					typeData = new JSONObject(arg0).getJSONArray("result");
-					rootListView.setAdapter(new MyAdapter());
+					listView.setAdapter(new MyAdapter());
 				} catch (JSONException e) {
-					Toast.makeText(SelectTypeActivity.this, "获取信息失败，服务器返回数据异常", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "获取信息失败，服务器返回数据异常", Toast.LENGTH_LONG).show();
 					e.printStackTrace();
 				}
 			}
 		}, new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError arg0) {
-				Toast.makeText(SelectTypeActivity.this, "获取信息失败，无法连接到服务器", Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), "获取信息失败，无法连接到服务器", Toast.LENGTH_LONG).show();
 			}
 		}, new HashMap<String, String>());
 	}
@@ -127,5 +176,5 @@ public class SelectTypeActivity extends Activity {
 		}
 
 	}
-
+*/
 }
