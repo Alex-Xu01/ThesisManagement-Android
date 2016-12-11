@@ -1,9 +1,9 @@
 package edu.gisi.magic.thesismanagement.activity;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,7 +19,7 @@ import edu.gisi.magic.thesismanagement.fragment.HomepageFragment;
 import edu.gisi.magic.thesismanagement.fragment.TypeFragment;
 import edu.gisi.magic.thesismanagement.fragment.UserCenterFragment;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private FragmentManager fragmentManager;
     private HomepageFragment homepageFragment;
@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     private ViewPager viewPager;
 
     public RadioGroup bottomRadio;
-    public static int radioChecked;
+    private RadioButton[] radiobuttons = new RadioButton[3];
     private long startTime = 0;
 
     @Override
@@ -43,6 +43,10 @@ public class MainActivity extends Activity {
 
     public void findview() {
         bottomRadio = (RadioGroup) findViewById(R.id.main_rg_tab);
+        radiobuttons[0]=(RadioButton) findViewById(R.id.main_bottom_icon_1);
+        radiobuttons[1]=(RadioButton) findViewById(R.id.main_bottom_icon_2);
+        radiobuttons[2]=(RadioButton) findViewById(R.id.main_bottom_icon_3);
+
         bottomRadio.setOnCheckedChangeListener(new OnCheckedChangeListener() {// 选项卡切换
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -70,24 +74,40 @@ public class MainActivity extends Activity {
     public void setAdapter() {
         viewAdapter = new MyFragmentPagerAdapter(fragmentManager, fragmentList);
         viewPager.setAdapter(viewAdapter);
-        viewPager.setOffscreenPageLimit(2);
+//        viewPager.setOffscreenPageLimit(2);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                pageChange(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void pageChange(int index) {
         switch (index) {
             case 0:
             case R.id.main_bottom_icon_1:
-                radioChecked = R.id.main_bottom_icon_1;
+                radiobuttons[0].setChecked(true);
                 viewPager.setCurrentItem(0);
                 break;
             case 1:
             case R.id.main_bottom_icon_2:
-                radioChecked = R.id.main_bottom_icon_2;
+                radiobuttons[1].setChecked(true);
                 viewPager.setCurrentItem(1);
                 break;
             case 2:
             case R.id.main_bottom_icon_3:
-                radioChecked = R.id.main_bottom_icon_3;
+                radiobuttons[2].setChecked(true);
                 viewPager.setCurrentItem(2);
                 break;
             default:

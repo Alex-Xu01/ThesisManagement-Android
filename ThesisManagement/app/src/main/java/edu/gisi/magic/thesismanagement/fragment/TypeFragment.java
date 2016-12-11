@@ -43,7 +43,6 @@ public class TypeFragment extends Fragment implements RadioGroup.OnCheckedChange
 
 	private void initView(View view) {
 
-		//init product type group
 		typeGroup = (RadioGroup) view.findViewById(R.id.product_type_group);
 		typeGroup.setOnCheckedChangeListener(this);
 		((RadioButton) typeGroup.getChildAt(0)).setChecked(true);

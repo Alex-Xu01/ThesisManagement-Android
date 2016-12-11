@@ -14,10 +14,10 @@ import android.widget.TextView;
 
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.activity.LoginActivity;
+import edu.gisi.magic.thesismanagement.volley.CacheTool;
 
 public class UserCenterFragment extends Fragment {
 
-	private ImageView topImageView;
 	private TextView usernameTextView;
 	private Button logoutButton;
 
@@ -30,12 +30,10 @@ public class UserCenterFragment extends Fragment {
 
 	@SuppressLint("NewApi")
 	public void initView(View view) {
-		this.topImageView = (ImageView) view.findViewById(R.id.topImageView);
 		this.usernameTextView = (TextView) view.findViewById(R.id.usernameTextView);
 		this.logoutButton = (Button) view.findViewById(R.id.logoutButton);
 
-//		this.topImageView.setImageDrawable(getActivity().getDrawable(R.drawable.hotel0));
-//		this.usernameTextView.setText("尊敬的酒店会员 " + CacheTool.get("username") + " , 欢迎您！");
+		this.usernameTextView.setText("尊敬的" + CacheTool.get("username") + " , 欢迎您！");
 		this.logoutButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

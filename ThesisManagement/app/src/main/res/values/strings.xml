@@ -7,4 +7,15 @@
 
     <string name="font_pecent">%1$.1f %%</string>
 
+    <string name="TYPE">类别  %1$s</string>
+
+    <string name="ORIGIN">来源  %1$s</string>
+
+    <string name="TEACHER">导师  %1$s</string>
+
+    <string name="NUMBER">人数  %1$s</string>
+
+    <string name="DEPARTMENT">所属院系  %1$s</string>
+
+
 </resources>

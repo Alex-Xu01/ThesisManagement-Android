@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.tjhj.client.view.base.RefreshLoadLayout
+    <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/list_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,5 +17,5 @@
             android:fadingEdge="none"
             android:scrollbars="none"/>
 
-    </com.tjhj.client.view.base.RefreshLoadLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>

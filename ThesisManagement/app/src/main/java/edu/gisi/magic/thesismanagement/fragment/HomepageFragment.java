@@ -15,9 +15,7 @@ import com.android.volley.VolleyError;
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.config.Urls;
 import edu.gisi.magic.thesismanagement.entity.GeneralData;
-import edu.gisi.magic.thesismanagement.view.RefreshLoadLayout;
 import edu.gisi.magic.thesismanagement.view.RingView;
-import edu.gisi.magic.thesismanagement.volley.CacheTool;
 import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
 /**
