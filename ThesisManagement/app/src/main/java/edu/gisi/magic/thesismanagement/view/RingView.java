@@ -165,7 +165,6 @@ public class RingView extends TextView {
      */
     public void setAngle(float startAngle) {
         SweepAngle = (360 * startAngle + 270);
-//        this.onDraw();
     }
 
     public void setText(String text) {

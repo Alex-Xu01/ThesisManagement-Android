@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -12,13 +13,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.adapter.MyFragmentPagerAdapter;
 import edu.gisi.magic.thesismanagement.fragment.HomepageFragment;
 import edu.gisi.magic.thesismanagement.fragment.TypeFragment;
 import edu.gisi.magic.thesismanagement.fragment.UserCenterFragment;
-
+/**
+ * 首页框架
+ * */
 public class MainActivity extends FragmentActivity {
 
     private FragmentManager fragmentManager;
@@ -31,7 +36,6 @@ public class MainActivity extends FragmentActivity {
 
     public RadioGroup bottomRadio;
     private RadioButton[] radiobuttons = new RadioButton[3];
-    private long startTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,15 +120,32 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    private boolean isExit;
     @Override
-    public void onBackPressed() {
-        long endTime = System.currentTimeMillis();
-        if (endTime - startTime < 2000) {
-            finish();
-            System.exit(0);
-        } else {
-            Toast.makeText(this, "再按一次返回键退出程序", Toast.LENGTH_SHORT).show();
-            startTime = endTime;
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (!isExit) {
+                if (bottomRadio.getCheckedRadioButtonId() == R.id.main_bottom_icon_1) {
+                    isExit = true;
+                    Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_LONG).show();
+                    Timer tExit = new Timer();
+                    tExit.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            isExit = false; // 取消退出
+                        }
+                    }, 2000);
+                    return true;
+                } else {
+                    bottomRadio.check(R.id.main_bottom_icon_1);
+                    return true;
+                }
+            } else {
+                finish();
+                System.exit(0);
+                return true;
+            }
         }
+        return super.onKeyDown(keyCode, event);
     }
 }

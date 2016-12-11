@@ -15,6 +15,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+/**
+ * Created by AlexXu on 2016/12/10.
+ */
+
 public class GsonRequest<T> extends Request<T> {
 
     private final Listener<T> mListener;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/product_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -8,15 +7,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="#f5f4f9"
-        android:layout_height="55dp">
+        android:layout_height="55dp"
+        android:background="#f5f4f9">
 
         <RadioGroup
-            android:layout_marginTop="10dp"
             android:id="@+id/product_type_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -24,13 +23,13 @@
                 android:id="@+id/mythesis_radio"
                 style="@style/radio_btn_title_style"
                 android:background="@drawable/product_list_btn_left_select"
-                android:checked="true"
                 android:text="我的论文" />
 
             <RadioButton
                 android:id="@+id/thesismanager_radio"
                 style="@style/radio_btn_title_style"
                 android:background="@drawable/product_list_btn_right_select"
+                android:checked="true"
                 android:text="论文列表" />
         </RadioGroup>
 

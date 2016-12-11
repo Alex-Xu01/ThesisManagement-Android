@@ -12,18 +12,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Response;
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.config.Urls;
-import edu.gisi.magic.thesismanagement.entity.UserInfo;
+import edu.gisi.magic.thesismanagement.entity.AccountInfo;
 import edu.gisi.magic.thesismanagement.volley.CacheTool;
 import edu.gisi.magic.thesismanagement.volley.VolleyManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -96,14 +91,14 @@ public class LoginActivity extends Activity {
 //        map.put("password", passwordEditText.getText().toString());
         map.put("username", "admin");
         map.put("password", "111111");
-        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_LOGIN, UserInfo.class,
-                new Response.Listener<UserInfo>() {
+        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_LOGIN, AccountInfo.class,
+                new Response.Listener<AccountInfo>() {
                     @Override
-                    public void onResponse(UserInfo userInfo) {
-                        if (userInfo.isResult()) {
+                    public void onResponse(AccountInfo accountInfo) {
+                        if (accountInfo.isResult()) {
                             Toast.makeText(getApplicationContext(), "登录成功，欢迎您回来！", Toast.LENGTH_LONG).show();
                             CacheTool.put("username", name);
-                            CacheTool.put("userId", String.valueOf(userInfo.getId()));
+                            CacheTool.put("userId", String.valueOf(accountInfo.getId()));
                             Intent intent = new Intent();
                             intent.setClass(LoginActivity.this, MainActivity.class);
                             startActivity(intent);

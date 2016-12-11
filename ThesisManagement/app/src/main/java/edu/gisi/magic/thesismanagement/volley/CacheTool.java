@@ -5,6 +5,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+/**
+ * Created by AlexXu on 2016/12/10.
+ */
+
 public class CacheTool {
 
 	public static Context context;

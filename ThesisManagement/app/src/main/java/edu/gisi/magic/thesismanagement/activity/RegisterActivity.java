@@ -16,10 +16,12 @@ import java.util.Map;
 
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.config.Urls;
-import edu.gisi.magic.thesismanagement.entity.UserInfo;
+import edu.gisi.magic.thesismanagement.entity.AccountInfo;
 import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
-
+/**
+ * 注册
+ * */
 public class RegisterActivity extends Activity {
 
     private Button registerButton;
@@ -47,11 +49,11 @@ public class RegisterActivity extends Activity {
                     // 两次输入密码不一致
                     Toast.makeText(RegisterActivity.this, "两次输入的密码不匹配，请检查", Toast.LENGTH_LONG).show();
                 } else {
-                    VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_REGISTER, UserInfo.class,
-                            new Response.Listener<UserInfo>() {
+                    VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_REGISTER, AccountInfo.class,
+                            new Response.Listener<AccountInfo>() {
                                 @Override
-                                public void onResponse(UserInfo userInfo) {
-                                    if (userInfo.isResult()) {
+                                public void onResponse(AccountInfo accountInfo) {
+                                    if (accountInfo.isResult()) {
                                         Toast.makeText(getApplicationContext(), "注册成功！请登录", Toast.LENGTH_LONG).show();
                                         finish();
                                     } else

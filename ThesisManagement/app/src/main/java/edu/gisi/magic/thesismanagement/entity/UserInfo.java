@@ -1,14 +1,18 @@
 package edu.gisi.magic.thesismanagement.entity;
 
 /**
- * Created by AlexXu on 2016/12/11.
+ * Created by AlexXu on 2016/12/12.
  */
-//实体类
+
 public class UserInfo {
+
     private int id;
-    private String username;
-    private String password;
-    private boolean result;
+
+    private String name;
+
+    private String dep;
+
+    private String imgUrl;
 
     public int getId() {
         return id;
@@ -18,27 +22,27 @@ public class UserInfo {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDep() {
+        return dep;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDep(String dep) {
+        this.dep = dep;
     }
 
-    public boolean isResult() {
-        return result;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setResult(boolean result) {
-        this.result = result;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

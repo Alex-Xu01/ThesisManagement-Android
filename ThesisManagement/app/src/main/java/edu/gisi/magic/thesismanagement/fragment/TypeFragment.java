@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import edu.gisi.magic.thesismanagement.R;
-import edu.gisi.magic.thesismanagement.activity.MainActivity;
 
 
 /**
@@ -24,7 +23,7 @@ public class TypeFragment extends Fragment implements RadioGroup.OnCheckedChange
 
 	private FragmentManager fragmentManager;
 	private MyThesisFragment myThesisFragment;
-	private ThesisManagerFragment thesisManagerFragment;
+	private ThesisListFragment thesisListFragment;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,17 +61,17 @@ public class TypeFragment extends Fragment implements RadioGroup.OnCheckedChange
 				} else {
 					transaction.show(myThesisFragment);
 				}
-				if (thesisManagerFragment != null) {
-					transaction.hide(thesisManagerFragment);
+				if (thesisListFragment != null) {
+					transaction.hide(thesisListFragment);
 				}
 				((RadioButton) typeGroup.getChildAt(0)).setChecked(true);
 				break;
 			case R.id.thesismanager_radio:
-				if (thesisManagerFragment == null) {
-					thesisManagerFragment = new ThesisManagerFragment();
-					transaction.add(R.id.layout_container_linear, thesisManagerFragment);
+				if (thesisListFragment == null) {
+					thesisListFragment = new ThesisListFragment();
+					transaction.add(R.id.layout_container_linear, thesisListFragment);
 				} else {
-					transaction.show(thesisManagerFragment);
+					transaction.show(thesisListFragment);
 				}
 				if (myThesisFragment != null) {
 					transaction.hide(myThesisFragment);

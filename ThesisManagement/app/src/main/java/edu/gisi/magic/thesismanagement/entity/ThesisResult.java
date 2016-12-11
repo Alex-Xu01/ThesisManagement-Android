@@ -8,71 +8,89 @@ public class ThesisResult {
 
     private int id;
 
-    private String name;
+    private String title;
 
-    private int activity;
+    private String type;
 
-    private int size;
+    private String origin;
 
-    private String house;
+    private String teacher;
 
-    private String images;
+    private String number;
 
-    private int price;
+    private String department;
+
+    private int status;
+
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getId() {
-        return this.id;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getName() {
-        return this.name;
+    public String getType() {
+        return type;
     }
 
-    public void setActivity(int activity) {
-        this.activity = activity;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getActivity() {
-        return this.activity;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
-    public int getSize() {
-        return this.size;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public void setHouse(String house) {
-        this.house = house;
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
-    public String getHouse() {
-        return this.house;
+    public String getNumber() {
+        return number;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public String getImages() {
-        return this.images;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public int getPrice() {
-        return this.price;
+    public int getStatus() {
+        return status;
     }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getStatusResult() {
+        if (status == 1)
+            return "可选";
+        else
+            return "已满";
+    }
+
 }

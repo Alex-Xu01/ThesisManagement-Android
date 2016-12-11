@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gisi.magic.thesismanagement.R;
-import edu.gisi.magic.thesismanagement.entity.Thesis;
 import edu.gisi.magic.thesismanagement.entity.ThesisResult;
 
 
@@ -62,7 +61,7 @@ public class ThesisListViewAdapter extends BaseAdapter {
         View view;
         ThesisHolder viewHolder;
         if (convertView == null) {
-            view = layoutInflater.inflate(R.layout.item_hotel, parent, false);
+            view = layoutInflater.inflate(R.layout.item_thesis, parent, false);
             viewHolder = new ThesisHolder(view);
             view.setTag(viewHolder);
         } else {
@@ -76,13 +75,16 @@ public class ThesisListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 //TODO 跳转到详情页
-                Toast.makeText(mContext, thesisResult.getName() + " & " + thesisResult.getHouse(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, thesisResult.getTitle() + " & " + thesisResult.getStatusResult(), Toast.LENGTH_SHORT).show();
             }
         });
-        viewHolder.mTitle.setText(thesisResult.getName());
-        viewHolder.mType.setText(mContext.getString(R.string.TYPE, thesisResult.getHouse()));
-        viewHolder.mOrigin.setText(mContext.getString(R.string.ORIGIN, String.valueOf(thesisResult.getSize())));
-        viewHolder.mTeacher.setText(mContext.getString(R.string.TEACHER, String.valueOf(thesisResult.getPrice())));
+        viewHolder.mTitle.setText(thesisResult.getTitle());
+        viewHolder.mType.setText(thesisResult.getType());
+        viewHolder.mOrigin.setText(thesisResult.getOrigin());
+        viewHolder.mTeacher.setText(thesisResult.getTeacher());
+        viewHolder.mNumber.setText(thesisResult.getNumber());
+        viewHolder.mDepartment.setText(thesisResult.getDepartment());
+        viewHolder.mStatus.setText(thesisResult.getStatusResult());
 
         return view;
     }
@@ -96,13 +98,17 @@ public class ThesisListViewAdapter extends BaseAdapter {
         private TextView mTeacher;
         private TextView mNumber;
         private TextView mDepartment;
+        private TextView mStatus;
 
         private ThesisHolder(View view) {
             container = view.findViewById(R.id.container);
             mTitle = (TextView) view.findViewById(R.id.titleTextView);
-            mType = (TextView) view.findViewById(R.id.houseTextView);
-            mOrigin = (TextView) view.findViewById(R.id.sizeTextView);
-            mTeacher = (TextView) view.findViewById(R.id.priceTextView);
+            mType = (TextView) view.findViewById(R.id.typeTextView);
+            mOrigin = (TextView) view.findViewById(R.id.originTextView);
+            mTeacher = (TextView) view.findViewById(R.id.teacherTextView);
+            mNumber = (TextView) view.findViewById(R.id.numberTextView);
+            mDepartment = (TextView) view.findViewById(R.id.departmentTextView);
+            mStatus = (TextView) view.findViewById(R.id.statusTextView);
         }
     }
 

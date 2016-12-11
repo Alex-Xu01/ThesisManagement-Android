@@ -7,6 +7,10 @@ import android.util.DisplayMetrics;
 
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 
+/**
+ * Created by AlexXu on 2016/12/10.
+ */
+
 public class LruBitmapCache extends LruCache<String, Bitmap>
         implements ImageCache {
 

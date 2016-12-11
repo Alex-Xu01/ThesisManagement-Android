@@ -15,7 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import edu.gisi.magic.thesismanagement.R;
@@ -27,10 +26,10 @@ import edu.gisi.magic.thesismanagement.volley.CacheTool;
 import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
 /**
- * 我的论文
+ * 论文列表
  */
 
-public class MyThesisFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ThesisListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private MainActivity activity;
     private View fragment;
@@ -38,7 +37,7 @@ public class MyThesisFragment extends Fragment implements SwipeRefreshLayout.OnR
     private ThesisListViewAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    public static final String TAG = "MyThesisFragment";
+    public static final String TAG = "ThesisListFragment";
 
     @Nullable
     @Override
@@ -63,9 +62,7 @@ public class MyThesisFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     private void requestList() {
-        Map<String, String> map = new HashMap<>();
-        map.put("username", CacheTool.get("username"));
-        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_TYPE_QUERY_ALL_ACTIVITY, Thesis.class,
+        VolleyManager.newInstance().GsonGetRequest(TAG,  Urls.URL_TYPE_QUERY_ALL, Thesis.class,
                 new Response.Listener<Thesis>() {
                     @Override
                     public void onResponse(Thesis thesis) {
@@ -77,7 +74,7 @@ public class MyThesisFragment extends Fragment implements SwipeRefreshLayout.OnR
                             } else {
                                 adapter.clear();
                                 adapter.notifyDataSetChanged();
-                                Toast.makeText(activity, "您还未选择论文", Toast.LENGTH_LONG).show();
+                                Toast.makeText(activity, "当前没有教师开设论文", Toast.LENGTH_LONG).show();
                             }
                         }
                     }

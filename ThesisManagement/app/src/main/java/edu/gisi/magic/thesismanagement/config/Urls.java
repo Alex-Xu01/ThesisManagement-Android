@@ -1,5 +1,9 @@
 package edu.gisi.magic.thesismanagement.config;
 
+/**
+ * Created by AlexXu on 2016/12/9.
+ */
+
 public class Urls {
 
     private static final String IP = "http://192.168.1.2:8080";
@@ -17,11 +21,10 @@ public class Urls {
     public static final String URL_ORDER_ADD = createUrl("/order/addOrder");
     public static final String URL_ORDER_QUERY_BY_USERNAME = createUrl("/order/queryByUserId");
 
+    public static final String URL_USER_INFO = "http://www.mocky.io/v2/584da4150f00009a1ad40fa8";
+
     private static String createUrl(String urlInfo) {
         return String.format("%s%s", urlPre, urlInfo);
     }
 
-    public static String createImageUrl(String imageName) {
-        return String.format("%s/images/%s", urlPre, imageName);
-    }
 }
