@@ -39,7 +39,7 @@ public class LoginActivity extends Activity {
     private EditText passwordEditText;
     private String name;
     private String pwd;
-
+    private long startTime = 0;
     public static final String TAG = "MainActivity";
 
     @Override
@@ -94,8 +94,8 @@ public class LoginActivity extends Activity {
         final Map<String, String> map = new HashMap<>();
 //        map.put("username", usernameEditText.getText().toString());
 //        map.put("password", passwordEditText.getText().toString());
-        map.put("username","admin");
-        map.put("password","111111");
+        map.put("username", "admin");
+        map.put("password", "111111");
         VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_LOGIN, UserInfo.class,
                 new Response.Listener<UserInfo>() {
                     @Override
@@ -119,5 +119,17 @@ public class LoginActivity extends Activity {
                         Log.e(TAG, error.getMessage(), error);
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        long endTime = System.currentTimeMillis();
+        if (endTime - startTime < 2000) {
+            finish();
+            System.exit(0);
+        } else {
+            Toast.makeText(this, "确定不登录直接退出?", Toast.LENGTH_SHORT).show();
+            startTime = endTime;
+        }
     }
 }

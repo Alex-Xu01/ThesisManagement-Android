@@ -5,5 +5,6 @@
 
     <string name="font_papers">%1$s 篇</string>
 
+    <string name="font_pecent">%1$.1f %%</string>
 
 </resources>

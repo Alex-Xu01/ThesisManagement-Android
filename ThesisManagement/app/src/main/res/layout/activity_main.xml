@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:drawablePadding="2dp"
             android:drawableTop="@drawable/dr_main_bottom_1"
+            android:checked="true"
             android:text="首页"
             android:textSize="10sp" />
 
@@ -46,7 +47,7 @@
         android:layout_above="@id/main_rg_tab"
         android:background="#B2B2B2" />
 
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/main_fl_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

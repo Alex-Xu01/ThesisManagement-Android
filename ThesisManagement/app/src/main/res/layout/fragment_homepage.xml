@@ -5,86 +5,105 @@
     android:background="#f5f4f9"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/homepage_container"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="380dp"
-        android:orientation="vertical"
-        android:background="#FFFFFF">
+        android:layout_height="match_parent">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="概况"
-            android:layout_marginLeft="10dp"
-            android:textSize="20sp"
-            android:gravity="center_vertical"
-            android:textStyle="normal|bold" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="#E5E5E5" />
-
-        <edu.gisi.magic.thesismanagement.view.RingView
-            android:id="@+id/RingPecent"
-            android:layout_width="250dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/rl_general"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#FFFFFF">
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/general"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="概况"
+                    android:textSize="20sp"
+                    android:textStyle="normal|bold" />
 
-            <TextView
-                style="@style/text_tv_14sp"
-                android:layout_width="wrap_content"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_below="@id/general"
+                    android:background="#E5E5E5" />
+
+                <edu.gisi.magic.thesismanagement.view.RingView
+                    android:id="@+id/RingPecent"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/general"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="已通过审核论文数：" />
+                android:layout_below="@id/rl_general"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_passedPaper"
-                style="@style/text_tv_14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="1000篇" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        style="@style/text_tv_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="已通过审核论文数：" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_passedPaper"
+                        style="@style/text_tv_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="--篇" />
 
-            <TextView
-                style="@style/text_tv_14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="当前可选论文数：    " />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_canBeChoosePaper"
-                style="@style/text_tv_14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="100篇" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        style="@style/text_tv_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="当前可选论文数：    " />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_canBeChoosePaper"
+                        style="@style/text_tv_14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="--篇" />
 
+                </LinearLayout>
 
+            </LinearLayout>
 
+        </RelativeLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>
