@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gisi.magic.thesismanagement.R;
+import edu.gisi.magic.thesismanagement.activity.ThesisDetailActivity;
 import edu.gisi.magic.thesismanagement.entity.ThesisResult;
+import edu.gisi.magic.thesismanagement.fragment.TypeFragment;
 
 
 /**
@@ -75,7 +77,13 @@ public class ThesisListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 //TODO 跳转到详情页
-                Toast.makeText(mContext, thesisResult.getTitle() + " & " + thesisResult.getStatusResult(), Toast.LENGTH_SHORT).show();
+                if (TypeFragment.getFragTag() == 0) {
+                    ThesisDetailActivity.startAc(mContext,String.valueOf(thesisResult.getId()),false);
+                } else if (TypeFragment.getFragTag() == 1) {
+                    ThesisDetailActivity.startAc(mContext,String.valueOf(thesisResult.getId()),true);
+                } else {
+                    return;
+                }
             }
         });
         viewHolder.mTitle.setText(thesisResult.getTitle());

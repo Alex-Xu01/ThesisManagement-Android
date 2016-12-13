@@ -7,4 +7,18 @@
 
     <string name="font_pecent">%1$.1f %%</string>
 
+    <string name="font_subtitle">—— %1$s</string>
+
+    <string name="font_type">类型： %1$s</string>
+
+    <string name="font_origin">来源： %1$s</string>
+
+    <string name="font_teacher">导师： %1$s</string>
+
+    <string name="font_number">人数： %1$s</string>
+
+    <string name="font_department">所属部门： %1$s</string>
+
+    <string name="font_content">论文描述： %1$s</string>
+
 </resources>

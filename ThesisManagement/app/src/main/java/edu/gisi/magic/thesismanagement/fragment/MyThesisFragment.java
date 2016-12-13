@@ -64,6 +64,7 @@ public class MyThesisFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void requestList() {
         Map<String, String> map = new HashMap<>();
+        //TODO 已对应的用户id去查论文列表
         map.put("username", CacheTool.get("username"));
         VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_TYPE_QUERY_ALL_ACTIVITY, Thesis.class,
                 new Response.Listener<Thesis>() {

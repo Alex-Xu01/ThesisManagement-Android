@@ -102,6 +102,7 @@ public class RingView extends TextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         paint.setColor(RingColor);      //ring的颜色
         Path path = new Path();
         path.reset();
@@ -127,7 +128,6 @@ public class RingView extends TextView {
             paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText(text, width / 2, height * 7 / 13, paint);
         }
-        super.onDraw(canvas);
     }
 
     /**
@@ -156,8 +156,6 @@ public class RingView extends TextView {
         // 下面是获得弧形剪裁区的方法
         path.addArc(rectF, startAngle, SweepAngle - startAngle);
         canvas.drawPath(path, paint);
-
-
     }
 
     /**

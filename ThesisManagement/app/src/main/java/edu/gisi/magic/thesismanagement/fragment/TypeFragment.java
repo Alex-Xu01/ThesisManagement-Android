@@ -16,69 +16,77 @@ import edu.gisi.magic.thesismanagement.R;
 
 /**
  * 论文管理
- * */
-public class TypeFragment extends Fragment implements RadioGroup.OnCheckedChangeListener{
+ */
+public class TypeFragment extends Fragment implements RadioGroup.OnCheckedChangeListener {
 
-	private RadioGroup typeGroup;
+    private RadioGroup typeGroup;
 
-	private FragmentManager fragmentManager;
-	private MyThesisFragment myThesisFragment;
-	private ThesisListFragment thesisListFragment;
+    private FragmentManager fragmentManager;
+    private MyThesisFragment myThesisFragment;
+    private ThesisListFragment thesisListFragment;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-							 Bundle savedInstanceState) {
-		super.onCreateView(inflater, container, savedInstanceState);
-		View view = inflater.inflate(R.layout.fragment_type, container,
-				false);
-		return view;
-	}
+    private static int fragTag = -1;
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		initView(view);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_type, container,
+                false);
+        return view;
+    }
 
-	private void initView(View view) {
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView(view);
+    }
 
-		typeGroup = (RadioGroup) view.findViewById(R.id.product_type_group);
-		typeGroup.setOnCheckedChangeListener(this);
-		((RadioButton) typeGroup.getChildAt(0)).setChecked(true);
-		
-	}
+    private void initView(View view) {
 
-	@Override
-	public void onCheckedChanged(RadioGroup group, int checkedId) {
+        typeGroup = (RadioGroup) view.findViewById(R.id.product_type_group);
+        typeGroup.setOnCheckedChangeListener(this);
+        ((RadioButton) typeGroup.getChildAt(0)).setChecked(true);
 
-		fragmentManager = getFragmentManager();
-		FragmentTransaction transaction = fragmentManager.beginTransaction();
-		switch (checkedId) {
-			case R.id.mythesis_radio:
-				if (myThesisFragment == null) {
-					myThesisFragment = new MyThesisFragment();
-					transaction.add(R.id.layout_container_linear, myThesisFragment);
-				} else {
-					transaction.show(myThesisFragment);
-				}
-				if (thesisListFragment != null) {
-					transaction.hide(thesisListFragment);
-				}
-				((RadioButton) typeGroup.getChildAt(0)).setChecked(true);
-				break;
-			case R.id.thesismanager_radio:
-				if (thesisListFragment == null) {
-					thesisListFragment = new ThesisListFragment();
-					transaction.add(R.id.layout_container_linear, thesisListFragment);
-				} else {
-					transaction.show(thesisListFragment);
-				}
-				if (myThesisFragment != null) {
-					transaction.hide(myThesisFragment);
-				}
-				((RadioButton) typeGroup.getChildAt(1)).setChecked(true);
-				break;
-		}
-		transaction.commit();
-	}
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+        fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        switch (checkedId) {
+            case R.id.mythesis_radio:
+                if (myThesisFragment == null) {
+                    myThesisFragment = new MyThesisFragment();
+                    transaction.add(R.id.layout_container_linear, myThesisFragment);
+                } else {
+                    transaction.show(myThesisFragment);
+                }
+                if (thesisListFragment != null) {
+                    transaction.hide(thesisListFragment);
+                }
+                ((RadioButton) typeGroup.getChildAt(0)).setChecked(true);
+                fragTag = 0;
+                break;
+            case R.id.thesismanager_radio:
+                if (thesisListFragment == null) {
+                    thesisListFragment = new ThesisListFragment();
+                    transaction.add(R.id.layout_container_linear, thesisListFragment);
+                } else {
+                    transaction.show(thesisListFragment);
+                }
+                if (myThesisFragment != null) {
+                    transaction.hide(myThesisFragment);
+                }
+                ((RadioButton) typeGroup.getChildAt(1)).setChecked(true);
+                fragTag = 1;
+                break;
+        }
+        transaction.commit();
+    }
+
+    public static int getFragTag() {
+        return fragTag;
+    }
 }

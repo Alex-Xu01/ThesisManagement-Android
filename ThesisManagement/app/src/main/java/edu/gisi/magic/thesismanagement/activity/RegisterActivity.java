@@ -42,7 +42,7 @@ public class RegisterActivity extends Activity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Map<String, String> map = new HashMap<String, String>();
+                Map<String, String> map = new HashMap<>();
                 map.put("username", usernameEditText.getText().toString());
                 map.put("password", passwordEditText.getText().toString());
                 if (!passwordEditText.getText().toString().equals(passwordEditText2.getText().toString())) {

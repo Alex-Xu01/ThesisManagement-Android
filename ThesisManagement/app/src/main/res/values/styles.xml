@@ -17,9 +17,9 @@
         <item name="android:button">@null</item>
     </style>
 
-    <style name="text_tv_14sp">
+    <style name="text_tv_18sp">
         <item name="android:gravity">center</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="radio_btn_title_style">

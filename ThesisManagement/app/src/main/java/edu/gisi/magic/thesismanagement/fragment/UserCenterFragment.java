@@ -55,7 +55,7 @@ public class UserCenterFragment extends Fragment {
     }
 
 
-    public void initView(View view) {
+    private void initView(View view) {
         nameTextView = (TextView) view.findViewById(R.id.nameTextView);
         depTextView = (TextView) view.findViewById(R.id.depTextView);
         AccountMsg = (TextView) view.findViewById(R.id.UserMsg);
@@ -74,7 +74,7 @@ public class UserCenterFragment extends Fragment {
         });
     }
 
-    public void setView() {
+    private void setView() {
         Map<String, String> map = new HashMap<>();
         map.put("username", CacheTool.get("username"));
 
@@ -95,7 +95,7 @@ public class UserCenterFragment extends Fragment {
                 });
     }
 
-    public void getViewHead() {
+    private void getViewHead() {
         VolleyManager.newInstance().ImageRequest(TAG, imgUrl,
                 new Response.Listener<Bitmap>() {
                     @Override

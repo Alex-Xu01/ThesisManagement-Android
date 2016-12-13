@@ -21,9 +21,10 @@ import edu.gisi.magic.thesismanagement.adapter.MyFragmentPagerAdapter;
 import edu.gisi.magic.thesismanagement.fragment.HomepageFragment;
 import edu.gisi.magic.thesismanagement.fragment.TypeFragment;
 import edu.gisi.magic.thesismanagement.fragment.UserCenterFragment;
+
 /**
  * 首页框架
- * */
+ */
 public class MainActivity extends FragmentActivity {
 
     private FragmentManager fragmentManager;
@@ -47,9 +48,9 @@ public class MainActivity extends FragmentActivity {
 
     public void findview() {
         bottomRadio = (RadioGroup) findViewById(R.id.main_rg_tab);
-        radiobuttons[0]=(RadioButton) findViewById(R.id.main_bottom_icon_1);
-        radiobuttons[1]=(RadioButton) findViewById(R.id.main_bottom_icon_2);
-        radiobuttons[2]=(RadioButton) findViewById(R.id.main_bottom_icon_3);
+        radiobuttons[0] = (RadioButton) findViewById(R.id.main_bottom_icon_1);
+        radiobuttons[1] = (RadioButton) findViewById(R.id.main_bottom_icon_2);
+        radiobuttons[2] = (RadioButton) findViewById(R.id.main_bottom_icon_3);
 
         bottomRadio.setOnCheckedChangeListener(new OnCheckedChangeListener() {// 选项卡切换
             @Override
@@ -78,7 +79,7 @@ public class MainActivity extends FragmentActivity {
     public void setAdapter() {
         viewAdapter = new MyFragmentPagerAdapter(fragmentManager, fragmentList);
         viewPager.setAdapter(viewAdapter);
-//        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(2);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -121,6 +122,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private boolean isExit;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {

@@ -42,7 +42,7 @@ public class HomepageFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void initView(View view) {
         passedPaper = (TextView) view.findViewById(R.id.tv_passedPaper);
         canBeChoosePaper = (TextView) view.findViewById(R.id.tv_canBeChoosePaper);
-
+        mRingView = (RingView) view.findViewById(R.id.RingPecent);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.homepage_container);
         swipeRefreshLayout.setOnRefreshListener(this);
     }
@@ -59,9 +59,9 @@ public class HomepageFragment extends Fragment implements SwipeRefreshLayout.OnR
                         Passed = data.getPassed();
                         CanBeChoose = data.getCanBeChoose();
                         pecent = CanBeChoose / (float) 1.0 / Passed;
-                        mRingView = (RingView) view.findViewById(R.id.RingPecent);
-                        mRingView.setText(getString(R.string.font_pecent, pecent * 100));
                         mRingView.setAngle(pecent);
+                        mRingView.setText(getString(R.string.font_pecent, pecent * 100));
+                        mRingView.invalidate();
                         passedPaper.setText(getString(R.string.font_papers, String.valueOf(Passed)));
                         canBeChoosePaper.setText(getString(R.string.font_papers, String.valueOf(CanBeChoose)));
                     }
@@ -78,4 +78,5 @@ public class HomepageFragment extends Fragment implements SwipeRefreshLayout.OnR
     public void onRefresh() {
         setContent();
     }
+
 }
