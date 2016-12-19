@@ -49,7 +49,14 @@
             android:name=".activity.ThesisDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"></activity>
-
+        <activity
+            android:name=".activity.AboutUsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

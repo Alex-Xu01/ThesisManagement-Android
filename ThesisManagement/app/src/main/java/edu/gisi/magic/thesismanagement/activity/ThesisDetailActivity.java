@@ -93,6 +93,7 @@ public class ThesisDetailActivity extends Activity {
                             new Response.Listener<ThesisConmmit>() {
                                 @Override
                                 public void onResponse(ThesisConmmit thesisConmmit) {
+                                    //TODO 将选题信息上传
                                     Toast.makeText(getApplicationContext(), id + " & " + CacheTool.get("username"), Toast.LENGTH_LONG).show();
                                 }
                             }, new Response.ErrorListener() {

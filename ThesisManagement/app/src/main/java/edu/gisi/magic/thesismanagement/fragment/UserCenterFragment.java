@@ -20,7 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.gisi.magic.thesismanagement.R;
+import edu.gisi.magic.thesismanagement.activity.AboutUsActivity;
 import edu.gisi.magic.thesismanagement.activity.LoginActivity;
+import edu.gisi.magic.thesismanagement.activity.WebViewActivity;
 import edu.gisi.magic.thesismanagement.config.Urls;
 import edu.gisi.magic.thesismanagement.entity.UserInfo;
 import edu.gisi.magic.thesismanagement.volley.CacheTool;
@@ -43,6 +45,7 @@ public class UserCenterFragment extends Fragment {
     private Button logoutButton;
 
     private String imgUrl;
+    private String kefuUrl="https://www.sobot.com/chat/h5/index.html?sysNum=e4a4159a5ee547b782e102fac25ceddb&source=2";
 
     public static final String TAG = "UserCenterFragment";
 
@@ -59,8 +62,26 @@ public class UserCenterFragment extends Fragment {
         nameTextView = (TextView) view.findViewById(R.id.nameTextView);
         depTextView = (TextView) view.findViewById(R.id.depTextView);
         AccountMsg = (TextView) view.findViewById(R.id.UserMsg);
+        AccountMsg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         toKefu = (TextView) view.findViewById(R.id.toKefu);
+        toKefu.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebViewActivity.startAc(getActivity(),"在线客服",kefuUrl);
+            }
+        });
         toAboutUs = (TextView) view.findViewById(R.id.toAboutUs);
+        toAboutUs.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), AboutUsActivity.class));
+            }
+        });
         imageView = (ImageView) view.findViewById(R.id.imageHead);
         logoutButton = (Button) view.findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new OnClickListener() {

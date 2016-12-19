@@ -21,4 +21,6 @@
 
     <string name="font_content">论文描述： %1$s</string>
 
+    <string name="version">版本号 :%1$s</string>
+
 </resources>
