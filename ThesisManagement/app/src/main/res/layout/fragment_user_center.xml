@@ -67,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:layout_below="@id/general"
+        android:layout_marginLeft="25dp"
         android:background="#E5E5E5" />
 
     <LinearLayout
@@ -91,6 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:layout_below="@id/general"
+        android:layout_marginLeft="25dp"
         android:background="#E5E5E5" />
 
     <LinearLayout

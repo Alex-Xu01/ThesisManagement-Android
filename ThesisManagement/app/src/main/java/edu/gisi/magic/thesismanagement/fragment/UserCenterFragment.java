@@ -22,6 +22,7 @@ import java.util.Map;
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.activity.AboutUsActivity;
 import edu.gisi.magic.thesismanagement.activity.LoginActivity;
+import edu.gisi.magic.thesismanagement.activity.MyAccountActivity;
 import edu.gisi.magic.thesismanagement.activity.WebViewActivity;
 import edu.gisi.magic.thesismanagement.config.Urls;
 import edu.gisi.magic.thesismanagement.entity.UserInfo;
@@ -44,8 +45,13 @@ public class UserCenterFragment extends Fragment {
 
     private Button logoutButton;
 
+    private String name;
     private String imgUrl;
-    private String kefuUrl="https://www.sobot.com/chat/h5/index.html?sysNum=e4a4159a5ee547b782e102fac25ceddb&source=2";
+    private String sex;
+    private String phone;
+    private String email;
+
+    private String kefuUrl = "https://www.sobot.com/chat/h5/index.html?sysNum=e4a4159a5ee547b782e102fac25ceddb&source=2";
 
     public static final String TAG = "UserCenterFragment";
 
@@ -57,7 +63,6 @@ public class UserCenterFragment extends Fragment {
         return view;
     }
 
-
     private void initView(View view) {
         nameTextView = (TextView) view.findViewById(R.id.nameTextView);
         depTextView = (TextView) view.findViewById(R.id.depTextView);
@@ -65,14 +70,14 @@ public class UserCenterFragment extends Fragment {
         AccountMsg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                MyAccountActivity.startAc(getActivity(), imgUrl, name, sex, phone, email);
             }
         });
         toKefu = (TextView) view.findViewById(R.id.toKefu);
         toKefu.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebViewActivity.startAc(getActivity(),"在线客服",kefuUrl);
+                WebViewActivity.startAc(getActivity(), "在线客服", kefuUrl);
             }
         });
         toAboutUs = (TextView) view.findViewById(R.id.toAboutUs);
@@ -103,9 +108,13 @@ public class UserCenterFragment extends Fragment {
                 new Response.Listener<UserInfo>() {
                     @Override
                     public void onResponse(UserInfo userInfo) {
-                        nameTextView.setText(userInfo.getName());
-                        depTextView.setText(userInfo.getDep());
                         imgUrl = userInfo.getImgUrl();
+                        name = userInfo.getName();
+                        sex = userInfo.getSex();
+                        phone = userInfo.getPhone();
+                        email = userInfo.getEmail();
+                        nameTextView.setText(name);
+                        depTextView.setText(userInfo.getDep());
                         getViewHead();
                     }
                 }, new Response.ErrorListener() {

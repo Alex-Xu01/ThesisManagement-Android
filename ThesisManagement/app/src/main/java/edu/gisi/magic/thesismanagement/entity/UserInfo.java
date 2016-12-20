@@ -14,6 +14,14 @@ public class UserInfo {
 
     private String imgUrl;
 
+    private String sex;
+
+    private String phone;
+
+    private String email;
+
+    private boolean result;
+
     public int getId() {
         return id;
     }
@@ -44,5 +52,37 @@ public class UserInfo {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
     }
 }
