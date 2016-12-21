@@ -29,7 +29,6 @@ import java.util.Map;
 public class LoginActivity extends Activity {
 
     private Button loginButton;
-    private Button registerButton;
     private EditText usernameEditText;
     private EditText passwordEditText;
     private String name;
@@ -47,25 +46,16 @@ public class LoginActivity extends Activity {
 
     private void initView() {
         loginButton = (Button) findViewById(R.id.loginButton);
-        registerButton = (Button) findViewById(R.id.registerButton);
         usernameEditText = (EditText) findViewById(R.id.usernameEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-
+        usernameEditText.setHint("请输入登录账号");
+        passwordEditText.setHint("请输入登录密码");
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkNull()) {
                     doLogin();
                 }
-            }
-        });
-
-        registerButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent();
-                intent.setClass(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
             }
         });
     }

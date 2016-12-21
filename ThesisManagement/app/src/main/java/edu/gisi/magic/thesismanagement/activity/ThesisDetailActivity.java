@@ -39,7 +39,13 @@ public class ThesisDetailActivity extends Activity {
 
     private TextView mOrigin;
 
-    private TextView mTeacher;
+    private TextView mTeacherName;
+
+    private TextView mTeacherPhone;
+
+    private TextView mTeacherEmail;
+
+    private TextView mTeacherTitle;
 
     private TextView mNumber;
 
@@ -70,7 +76,10 @@ public class ThesisDetailActivity extends Activity {
         mSubTitle = (TextView) findViewById(R.id.tv_subTitle);
         mType = (TextView) findViewById(R.id.tv_type);
         mOrigin = (TextView) findViewById(R.id.tv_origin);
-        mTeacher = (TextView) findViewById(R.id.tv_teacher);
+        mTeacherName = (TextView) findViewById(R.id.tv_teacher_name);
+        mTeacherPhone = (TextView) findViewById(R.id.tv_teacher_phone);
+        mTeacherEmail = (TextView) findViewById(R.id.tv_teacher_email);
+        mTeacherTitle = (TextView) findViewById(R.id.tv_teacher_title);
         mNumber = (TextView) findViewById(R.id.tv_number);
         mDepartment = (TextView) findViewById(R.id.tv_department);
         mContent = (TextView) findViewById(R.id.tv_content);
@@ -117,7 +126,10 @@ public class ThesisDetailActivity extends Activity {
                         mSubTitle.setText(getString(R.string.font_subtitle, thesisConmmit.getSubTitle()));
                         mType.setText(getString(R.string.font_type, thesisConmmit.getType()));
                         mOrigin.setText(getString(R.string.font_origin, thesisConmmit.getOrigin()));
-                        mTeacher.setText(getString(R.string.font_teacher, thesisConmmit.getTeacher()));
+                        mTeacherName.setText(getString(R.string.font_teacher_name, thesisConmmit.getName()));
+                        mTeacherPhone.setText(getString(R.string.font_teacher_phone, thesisConmmit.getPhone()));
+                        mTeacherEmail.setText(getString(R.string.font_teacher_email, thesisConmmit.getEmail()));
+                        mTeacherTitle.setText(getString(R.string.font_teacher_title, thesisConmmit.getTitle()));
                         mNumber.setText(getString(R.string.font_number, thesisConmmit.getNumber()));
                         mDepartment.setText(getString(R.string.font_department, thesisConmmit.getDepartment()));
                         mContent.setText(getString(R.string.font_content, thesisConmmit.getContent()));

@@ -29,15 +29,14 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="90dp"
             android:text="--"
-            android:textColor="#00080e"
+            android:textColor="#383b3d"
             android:textSize="16sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="15dp"
-            android:background="#E5E5E5" />
+            android:layout_height="1dp"
+            android:layout_marginBottom="15dp"
+            android:background="#c4c4c4" />
 
         <TextView
             android:id="@+id/tv_type"
@@ -74,12 +73,12 @@
             android:background="#E5E5E5" />
 
         <TextView
-            android:id="@+id/tv_teacher"
+            android:id="@+id/tv_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
-            android:text="导师： --"
+            android:text="开设人数： --"
             android:textColor="#00080e"
             android:textSize="14sp" />
 
@@ -91,12 +90,63 @@
             android:background="#E5E5E5" />
 
         <TextView
-            android:id="@+id/tv_number"
+            android:id="@+id/tv_teacher_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
-            android:text="人数： --"
+            android:text="导师姓名： --"
+            android:textColor="#00080e"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:background="#E5E5E5" />
+
+        <TextView
+            android:id="@+id/tv_teacher_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:text="导师电话： --"
+            android:textColor="#00080e"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:background="#E5E5E5" />
+
+        <TextView
+            android:id="@+id/tv_teacher_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:text="导师邮箱： --"
+            android:textColor="#00080e"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:background="#E5E5E5" />
+
+        <TextView
+            android:id="@+id/tv_teacher_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:text="导师职称： --"
             android:textColor="#00080e"
             android:textSize="14sp" />
 
@@ -145,8 +195,8 @@
                 android:id="@+id/enterButton"
                 android:layout_width="260dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="40dp"
-                android:background="#1bca86"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btn_green"
                 android:text="确认选题"
                 android:textColor="#ffffff"
                 android:visibility="gone" />

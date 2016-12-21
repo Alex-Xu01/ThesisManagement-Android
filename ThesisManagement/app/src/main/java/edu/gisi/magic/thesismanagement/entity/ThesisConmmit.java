@@ -14,7 +14,13 @@ public class ThesisConmmit {
 
     private String origin;
 
-    private String teacher;
+    private String name;
+
+    private String phone;
+
+    private String email;
+
+    private String title;
 
     private String number;
 
@@ -54,12 +60,36 @@ public class ThesisConmmit {
         return this.origin;
     }
 
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
+    public String getName() {
+        return name;
     }
 
-    public String getTeacher() {
-        return this.teacher;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setNumber(String number) {

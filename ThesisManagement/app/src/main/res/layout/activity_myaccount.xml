@@ -15,7 +15,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="100dp"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
@@ -30,7 +30,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageHead"
             android:layout_width="90dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="30dp" />
 
@@ -191,7 +191,7 @@
             android:layout_width="260dp"
             android:layout_height="50dp"
             android:layout_marginBottom="40dp"
-            android:background="#1bca86"
+            android:background="@drawable/btn_green"
             android:text="提交修改"
             android:textColor="#ffffff" />
 

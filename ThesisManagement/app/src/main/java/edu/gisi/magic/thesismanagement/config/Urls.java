@@ -6,7 +6,7 @@ package edu.gisi.magic.thesismanagement.config;
 
 public class Urls {
 
-    private static final String IP = "http://192.168.1.12:8080/";
+    private static final String IP = "http://192.168.1.6:8080/";
     private static final String urlPre = IP + "/GTMS";
 
     public static final String URL_USER_REGISTER = createUrl("/user/register");
@@ -18,7 +18,7 @@ public class Urls {
     public static final String URL_TYPE_QUERY_ALL = createUrl("/type/queryAll");
     public static final String URL_TYPE_QUERY_ALL_ACTIVITY = createUrl("/type/queryAllActivity");
 
-    public static final String URL_THESIS = "http://www.mocky.io/v2/584e6a511200005f093949c3";
+    public static final String URL_THESIS = "http://www.mocky.io/v2/585ab7280f00001312161867";
     public static final String URL_ORDER_ADD = createUrl("/order/addOrder");
     public static final String URL_ORDER_QUERY_BY_USERNAME = createUrl("/order/queryByUserId");
 

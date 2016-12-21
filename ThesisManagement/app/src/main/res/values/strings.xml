@@ -13,9 +13,15 @@
 
     <string name="font_origin">来源： %1$s</string>
 
-    <string name="font_teacher">导师： %1$s</string>
+    <string name="font_teacher_name">导师姓名： %1$s</string>
 
-    <string name="font_number">人数： %1$s</string>
+    <string name="font_teacher_phone">导师电话： %1$s</string>
+
+    <string name="font_teacher_email">导师邮箱： %1$s</string>
+
+    <string name="font_teacher_title">导师职称： %1$s</string>
+
+    <string name="font_number">开设人数： %1$s</string>
 
     <string name="font_department">所属部门： %1$s</string>
 
