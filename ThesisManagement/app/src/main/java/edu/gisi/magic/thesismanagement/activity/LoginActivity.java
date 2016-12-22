@@ -88,6 +88,7 @@ public class LoginActivity extends Activity {
                         if (accountInfo.isResult()) {
                             Toast.makeText(getApplicationContext(), "登录成功，欢迎您回来！", Toast.LENGTH_LONG).show();
                             CacheTool.put("username", name);
+                            CacheTool.put("password", pwd);
                             CacheTool.put("userId", String.valueOf(accountInfo.getId()));
                             Intent intent = new Intent();
                             intent.setClass(LoginActivity.this, MainActivity.class);

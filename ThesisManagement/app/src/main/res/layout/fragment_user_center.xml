@@ -76,6 +76,31 @@
         android:background="#FFFFFF">
 
         <TextView
+            android:id="@+id/changePassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:drawableRight="@drawable/in"
+            android:gravity="center_vertical"
+            android:paddingRight="15dp"
+            android:text="修改密码"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_below="@id/general"
+        android:layout_marginLeft="25dp"
+        android:background="#E5E5E5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#FFFFFF">
+
+        <TextView
             android:id="@+id/toKefu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

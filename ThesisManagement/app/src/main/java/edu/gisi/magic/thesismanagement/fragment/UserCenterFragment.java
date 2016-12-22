@@ -21,6 +21,7 @@ import java.util.Map;
 
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.activity.AboutUsActivity;
+import edu.gisi.magic.thesismanagement.activity.ChangePasswordActivity;
 import edu.gisi.magic.thesismanagement.activity.LoginActivity;
 import edu.gisi.magic.thesismanagement.activity.MyAccountActivity;
 import edu.gisi.magic.thesismanagement.activity.WebViewActivity;
@@ -40,6 +41,7 @@ public class UserCenterFragment extends Fragment {
     private TextView nameTextView;
     private TextView depTextView;
     private TextView AccountMsg;
+    private TextView ChangePwd;
     private TextView toKefu;
     private TextView toAboutUs;
 
@@ -71,6 +73,13 @@ public class UserCenterFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MyAccountActivity.startAc(getActivity(), imgUrl, name, sex, phone, email);
+            }
+        });
+        ChangePwd= (TextView) view.findViewById(R.id.changePassword);
+        ChangePwd.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
             }
         });
         toKefu = (TextView) view.findViewById(R.id.toKefu);
