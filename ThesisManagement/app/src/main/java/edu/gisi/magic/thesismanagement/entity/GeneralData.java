@@ -5,22 +5,24 @@ package edu.gisi.magic.thesismanagement.entity;
  */
 
 public class GeneralData {
-    private int passed;
-    private int canBeChoose;
 
-    public int getPassed() {
-        return passed;
+    private int passNumber;
+
+    private int failedNumber;
+
+    public int getPassNumber() {
+        return passNumber;
     }
 
-    public void setPassed(int passed) {
-        this.passed = passed;
+    public void setPassNumber(int passNumber) {
+        this.passNumber = passNumber;
     }
 
-    public int getCanBeChoose() {
-        return canBeChoose;
+    public int getFailedNumber() {
+        return failedNumber;
     }
 
-    public void setCanBeChoose(int canBeChoose) {
-        this.canBeChoose = canBeChoose;
+    public void setFailedNumber(int failedNumber) {
+        this.failedNumber = failedNumber;
     }
 }

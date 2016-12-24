@@ -15,7 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import edu.gisi.magic.thesismanagement.R;
@@ -64,17 +63,17 @@ public class MyThesisFragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private void requestList() {
         Map<String, String> map = new HashMap<>();
-        //TODO 已对应的用户id去查论文列表
-        map.put("username", CacheTool.get("username"));
-        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_TYPE_QUERY_ALL_ACTIVITY, Thesis.class,
+        map.put("studentId", CacheTool.get("studentId"));
+        map.put("android", "1");
+        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_MY_THESIS, Thesis.class,
                 new Response.Listener<Thesis>() {
                     @Override
                     public void onResponse(Thesis thesis) {
                         swipeRefreshLayout.setRefreshing(false);
                         if (thesis != null) {
-                            if ((thesis.getResult().size() != 0) || (thesis.getResult() != null)) {
+                            if (thesis.getThesisResult().size() != 0) {
                                 adapter.clear();
-                                adapter.appendAndNotify(thesis.getResult());
+                                adapter.appendAndNotify(thesis.getThesisResult());
                             } else {
                                 adapter.clear();
                                 adapter.notifyDataSetChanged();

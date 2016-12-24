@@ -89,10 +89,10 @@ public class ThesisListViewAdapter extends BaseAdapter {
         viewHolder.mTitle.setText(thesisResult.getTitle());
         viewHolder.mType.setText(thesisResult.getType());
         viewHolder.mOrigin.setText(thesisResult.getOrigin());
-        viewHolder.mTeacher.setText(thesisResult.getTeacher());
-        viewHolder.mNumber.setText(thesisResult.getNumber());
-        viewHolder.mDepartment.setText(thesisResult.getDepartment());
-        viewHolder.mStatus.setText(thesisResult.getStatusResult());
+        viewHolder.mTeacher.setText(thesisResult.getTeacher().getName());
+        viewHolder.mNumber.setText(thesisResult.getNumbers());
+        viewHolder.mDepartment.setText(thesisResult.getDep().getName());
+        viewHolder.mStatus.setText(thesisResult.getVerifyState());
 
         return view;
     }

@@ -6,21 +6,35 @@ package edu.gisi.magic.thesismanagement.entity;
 
 public class ThesisResult {
 
-    private int id;
+    private String content;
 
-    private String title;
+    private int id;         //paperID
 
-    private String type;
+    private String title;   //标题
 
-    private String origin;
+    private String subtitle;   //标题
 
-    private String teacher;
+    private String type;    //类型
 
-    private String number;
+    private String origin;  //来源
 
-    private String department;
+    private Teacher teacher;//教师类
 
-    private int status;
+    private String numbers;    //人数
+
+    private Dep dep;        //部门类
+
+    private int verifyState;//状态
+
+    private boolean result;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getId() {
         return id;
@@ -36,6 +50,14 @@ public class ThesisResult {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 
     public String getType() {
@@ -54,43 +76,47 @@ public class ThesisResult {
         this.origin = origin;
     }
 
-    public String getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(String teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
-    public String getNumber() {
-        return number;
+    public String getNumbers() {
+        return numbers;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setNumbers(String numbers) {
+        this.numbers = numbers;
     }
 
-    public String getDepartment() {
-        return department;
+    public Dep getDep() {
+        return dep;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDep(Dep dep) {
+        this.dep = dep;
     }
 
-    public int getStatus() {
-        return status;
+    public String getVerifyState() {
+        if (verifyState == 0)
+            return "未审核";
+        else if (verifyState == 1)
+            return "通过审核";
+        else return "未通过审核";
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setVerifyState(int verifyState) {
+        this.verifyState = verifyState;
     }
 
-    public String getStatusResult() {
-        if (status == 1)
-            return "可选";
-        else
-            return "已满";
+    public boolean isResult() {
+        return result;
     }
 
+    public void setResult(boolean result) {
+        this.result = result;
+    }
 }

@@ -26,6 +26,7 @@ import java.util.Map;
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.config.Urls;
 import edu.gisi.magic.thesismanagement.entity.UserInfo;
+import edu.gisi.magic.thesismanagement.volley.CacheTool;
 import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
 /**
@@ -104,6 +105,9 @@ public class MyAccountActivity extends Activity {
                     name = UserName.getText().toString();
 
                 sex = UserSex.getSelectedItem().toString();
+                if ("男".equals(sex))
+                    sex = "m";
+                else sex = "f";
 
                 if (UserPhone.getText().toString().equals(""))
                     phone = UserPhone.getHint().toString();
@@ -116,17 +120,21 @@ public class MyAccountActivity extends Activity {
                     email = UserMail.getText().toString();
 
                 final Map<String, String> map = new HashMap<>();
+                map.put("studentId", CacheTool.get("studentId"));
                 map.put("name", name);
-                map.put("sex", sex);
+                map.put("gender", sex);
                 map.put("phone", phone);
                 map.put("email", email);
-                VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_LOGIN, UserInfo.class,
+                map.put("android", "1");
+
+                VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_CHANGE_INFO, UserInfo.class,
                         new Response.Listener<UserInfo>() {
                             @Override
                             public void onResponse(UserInfo userInfo) {
-                                if (userInfo.isResult())
+                                if (userInfo.isResult()) {
                                     Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_LONG).show();
-                                else
+                                    finish();
+                                } else
                                     Toast.makeText(getApplicationContext(), "修改失败,所填信息错误", Toast.LENGTH_LONG).show();
                             }
                         }, new Response.ErrorListener() {

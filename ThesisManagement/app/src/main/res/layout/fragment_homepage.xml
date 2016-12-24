@@ -68,10 +68,10 @@
                         style="@style/text_tv_18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="已通过审核论文数：" />
+                        android:text="已提交审核论文数：" />
 
                     <TextView
-                        android:id="@+id/tv_passedPaper"
+                        android:id="@+id/tv_totalPaper"
                         style="@style/text_tv_18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -91,10 +91,10 @@
                         style="@style/text_tv_18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="当前可选论文数：    " />
+                        android:text="已通过审核论文数：" />
 
                     <TextView
-                        android:id="@+id/tv_canBeChoosePaper"
+                        android:id="@+id/tv_passedPaper"
                         style="@style/text_tv_18sp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

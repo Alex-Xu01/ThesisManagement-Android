@@ -77,19 +77,19 @@ public class LoginActivity extends Activity {
 
     private void doLogin() {
         final Map<String, String> map = new HashMap<>();
-//        map.put("username", usernameEditText.getText().toString());
-//        map.put("password", passwordEditText.getText().toString());
-        map.put("username", "admin");
-        map.put("password", "111111");
+        map.put("loginName", usernameEditText.getText().toString());
+        map.put("loginPwd", passwordEditText.getText().toString());
+        map.put("android", "1");
         VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_LOGIN, AccountInfo.class,
                 new Response.Listener<AccountInfo>() {
                     @Override
                     public void onResponse(AccountInfo accountInfo) {
                         if (accountInfo.isResult()) {
                             Toast.makeText(getApplicationContext(), "登录成功，欢迎您回来！", Toast.LENGTH_LONG).show();
-                            CacheTool.put("username", name);
-                            CacheTool.put("password", pwd);
-                            CacheTool.put("userId", String.valueOf(accountInfo.getId()));
+                            CacheTool.put("loginName", name);
+                            CacheTool.put("loginPwd", pwd);
+                            CacheTool.put("accountId", String.valueOf(accountInfo.getAccountId()));
+                            CacheTool.put("studentId",String.valueOf(accountInfo.getStudentId()));
                             Intent intent = new Intent();
                             intent.setClass(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -101,7 +101,7 @@ public class LoginActivity extends Activity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "登录失败，无法连接到服务器", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "登录失败，用户名或密码错误", Toast.LENGTH_LONG).show();
                         Log.e(TAG, error.getMessage(), error);
                     }
                 });

@@ -8,13 +8,13 @@ import java.util.List;
 
 public class Thesis {
 
-    private List<ThesisResult> result;
+    private List<ThesisResult> thesisResult;
 
-    public List<ThesisResult> getResult() {
-        return result;
+    public List<ThesisResult> getThesisResult() {
+        return thesisResult;
     }
 
-    public void setResult(List<ThesisResult> result) {
-        this.result = result;
+    public void setThesisResult(List<ThesisResult> thesisResult) {
+        this.thesisResult = thesisResult;
     }
 }

@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.config.Urls;
 import edu.gisi.magic.thesismanagement.entity.GeneralData;
@@ -24,8 +27,8 @@ import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 public class HomepageFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private RingView mRingView;
+    private TextView totalPaper;
     private TextView passedPaper;
-    private TextView canBeChoosePaper;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View view;
 
@@ -40,30 +43,31 @@ public class HomepageFragment extends Fragment implements SwipeRefreshLayout.OnR
     }
 
     public void initView(View view) {
+        totalPaper = (TextView) view.findViewById(R.id.tv_totalPaper);
         passedPaper = (TextView) view.findViewById(R.id.tv_passedPaper);
-        canBeChoosePaper = (TextView) view.findViewById(R.id.tv_canBeChoosePaper);
         mRingView = (RingView) view.findViewById(R.id.RingPecent);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.homepage_container);
         swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     public void setContent() {
-
-        VolleyManager.newInstance().GsonGetRequest(TAG, Urls.URL_GENERAL, GeneralData.class,
+        final Map<String, String> map = new HashMap<>();
+        map.put("android", "1");
+        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_GENERAL, GeneralData.class,
                 new Response.Listener<GeneralData>() {
                     @Override
                     public void onResponse(GeneralData data) {
                         swipeRefreshLayout.setRefreshing(false);
                         float pecent;
-                        int Passed, CanBeChoose;
-                        Passed = data.getPassed();
-                        CanBeChoose = data.getCanBeChoose();
-                        pecent = CanBeChoose / (float) 1.0 / Passed;
+                        int Passed, Total;
+                        Passed = data.getPassNumber();
+                        Total = data.getFailedNumber() + data.getPassNumber();
+                        pecent = Passed / (float) 1.0 / Total;
                         mRingView.setAngle(pecent);
                         mRingView.setText(getString(R.string.font_pecent, pecent * 100));
                         mRingView.invalidate();
+                        totalPaper.setText(getString(R.string.font_papers, String.valueOf(Total)));
                         passedPaper.setText(getString(R.string.font_papers, String.valueOf(Passed)));
-                        canBeChoosePaper.setText(getString(R.string.font_papers, String.valueOf(CanBeChoose)));
                     }
                 }, new Response.ErrorListener() {
                     @Override

@@ -1,18 +1,14 @@
 package edu.gisi.magic.thesismanagement.entity;
 
 /**
- * Created by AlexXu on 2016/12/12.
+ * Created by xulih on 2016/12/24.
  */
 
-public class UserInfo {
-
-    private int accountId;
+public class Teacher {
 
     private Dep dep;
 
     private String email;
-
-    private String gender;
 
     private int id;
 
@@ -20,72 +16,74 @@ public class UserInfo {
 
     private String phone;
 
-    private String picPath;
+    private String specialty;
 
     private int state;
 
-    private boolean result;
+    private String title;
 
-    public void setAccountId(int accountId){
-        this.accountId = accountId;
-    }
-    public int getAccountId(){
-        return this.accountId;
-    }
     public void setDep(Dep dep){
         this.dep = dep;
     }
+
     public Dep getDep(){
         return this.dep;
     }
+
     public void setEmail(String email){
         this.email = email;
     }
+
     public String getEmail(){
         return this.email;
     }
-    public void setGender(String gender){
-        this.gender = gender;
-    }
-    public String getGender(){
-        return this.gender;
-    }
+
     public void setId(int id){
         this.id = id;
     }
+
     public int getId(){
         return this.id;
     }
+
     public void setName(String name){
         this.name = name;
     }
+
     public String getName(){
         return this.name;
     }
+
     public void setPhone(String phone){
         this.phone = phone;
     }
+
     public String getPhone(){
         return this.phone;
     }
-    public void setPicPath(String picPath){
-        this.picPath = picPath;
+
+    public void setSpecialty(String specialty){
+        this.specialty = specialty;
     }
-    public String getPicPath(){
-        return this.picPath;
+
+    public String getSpecialty(){
+        return this.specialty;
     }
+
     public void setState(int state){
         this.state = state;
     }
+
     public int getState(){
         return this.state;
     }
 
-    public boolean isResult() {
-        return result;
+    public void setTitle(String title){
+        this.title = title;
     }
 
-    public void setResult(boolean result) {
-        this.result = result;
+    public String getTitle(){
+        return this.title;
     }
+
 }

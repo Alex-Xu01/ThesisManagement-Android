@@ -62,15 +62,17 @@ public class ThesisListFragment extends Fragment implements SwipeRefreshLayout.O
     }
 
     private void requestList() {
-        VolleyManager.newInstance().GsonGetRequest(TAG,  Urls.URL_TYPE_QUERY_ALL, Thesis.class,
+        Map<String, String> map = new HashMap<>();
+        map.put("android", "1");
+        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_THESIS_ALL, Thesis.class,
                 new Response.Listener<Thesis>() {
                     @Override
                     public void onResponse(Thesis thesis) {
                         swipeRefreshLayout.setRefreshing(false);
                         if (thesis != null) {
-                            if ((thesis.getResult().size() != 0) || (thesis.getResult() != null)) {
+                            if ((thesis.getThesisResult().size() != 0) || (thesis.getThesisResult() != null)) {
                                 adapter.clear();
-                                adapter.appendAndNotify(thesis.getResult());
+                                adapter.appendAndNotify(thesis.getThesisResult());
                             } else {
                                 adapter.clear();
                                 adapter.notifyDataSetChanged();

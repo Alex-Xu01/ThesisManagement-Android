@@ -44,20 +44,22 @@ public class ChangePasswordActivity extends Activity {
         subButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (CacheTool.get("password").equals(ordPwd.getText().toString())) {
+                if (CacheTool.get("loginPwd").equals(ordPwd.getText().toString())) {
 
                     Map<String, String> map = new HashMap<>();
-                    map.put("password", againPwd.getText().toString());
+                    map.put("id", CacheTool.get("accountId"));
+                    map.put("newPwd", againPwd.getText().toString());
+                    map.put("android", "1");
                     if (!newPwd.getText().toString().equals(againPwd.getText().toString())) {
                         // 两次输入密码不一致
                         Toast.makeText(ChangePasswordActivity.this, "两次输入的密码不匹配，请检查", Toast.LENGTH_LONG).show();
                     } else {
-                        if (CacheTool.get("password").equals(againPwd.getText().toString())) {
+                        if (CacheTool.get("loginPwd").equals(againPwd.getText().toString())) {
                             newPwd.setText("");
                             againPwd.setText("");
                             Toast.makeText(getApplicationContext(), "新密码不能与原密码相同", Toast.LENGTH_LONG).show();
                         } else {
-                            VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_REGISTER, AccountInfo.class,
+                            VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_CHANGE_PASSWORD, AccountInfo.class,
                                     new Response.Listener<AccountInfo>() {
                                         @Override
                                         public void onResponse(AccountInfo accountInfo) {

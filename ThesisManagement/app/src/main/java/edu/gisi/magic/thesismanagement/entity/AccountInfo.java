@@ -6,36 +6,18 @@ package edu.gisi.magic.thesismanagement.entity;
 
 public class AccountInfo {
 
-    private int id;
-
-    private String username;
-
-    private String password;
+    private int accountId;
 
     private boolean result;
 
-    public int getId() {
-        return id;
+    private int studentId;
+
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public boolean isResult() {
@@ -44,5 +26,13 @@ public class AccountInfo {
 
     public void setResult(boolean result) {
         this.result = result;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 }

@@ -18,8 +18,7 @@ import java.util.Map;
 
 import edu.gisi.magic.thesismanagement.R;
 import edu.gisi.magic.thesismanagement.config.Urls;
-import edu.gisi.magic.thesismanagement.entity.AccountInfo;
-import edu.gisi.magic.thesismanagement.entity.ThesisConmmit;
+import edu.gisi.magic.thesismanagement.entity.ThesisResult;
 import edu.gisi.magic.thesismanagement.volley.CacheTool;
 import edu.gisi.magic.thesismanagement.volley.VolleyManager;
 
@@ -55,7 +54,7 @@ public class ThesisDetailActivity extends Activity {
 
     private Button mButton;
 
-    private String id;
+    private String paperId;
 
     private boolean showBtn;
 
@@ -88,7 +87,7 @@ public class ThesisDetailActivity extends Activity {
 
     private void initData() {
         Intent intent = getIntent();
-        id = intent.getStringExtra("id");
+        paperId = intent.getStringExtra("id");
         showBtn = intent.getBooleanExtra("showBtn", false);
         if (showBtn) {
             mButton.setVisibility(View.VISIBLE);
@@ -96,14 +95,17 @@ public class ThesisDetailActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     final Map<String, String> map = new HashMap<>();
-                    map.put("id", id);
-                    map.put("username", CacheTool.get("username"));
-                    VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_THESIS, ThesisConmmit.class,
-                            new Response.Listener<ThesisConmmit>() {
+                    map.put("studentId", CacheTool.get("studentId"));
+                    map.put("paperId", paperId);
+                    map.put("android", "1");
+                    VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_THESIS_ADD, ThesisResult.class,
+                            new Response.Listener<ThesisResult>() {
                                 @Override
-                                public void onResponse(ThesisConmmit thesisConmmit) {
-                                    //TODO 将选题信息上传
-                                    Toast.makeText(getApplicationContext(), id + " & " + CacheTool.get("username"), Toast.LENGTH_LONG).show();
+                                public void onResponse(ThesisResult thesisResult) {
+                                    if (thesisResult.isResult())
+                                        Toast.makeText(getApplicationContext(), "选题成功", Toast.LENGTH_LONG).show();
+                                    else
+                                        Toast.makeText(getApplicationContext(), "选题失败", Toast.LENGTH_LONG).show();
                                 }
                             }, new Response.ErrorListener() {
                                 @Override
@@ -117,22 +119,23 @@ public class ThesisDetailActivity extends Activity {
         }
 
         final Map<String, String> map = new HashMap<>();
-        map.put("id", id);
-        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_THESIS, ThesisConmmit.class,
-                new Response.Listener<ThesisConmmit>() {
+        map.put("paperId", paperId);
+        map.put("android", "1");
+        VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_THESIS, ThesisResult.class,
+                new Response.Listener<ThesisResult>() {
                     @Override
-                    public void onResponse(ThesisConmmit thesisConmmit) {
-                        mMainTitle.setText(thesisConmmit.getMainTitle());
-                        mSubTitle.setText(getString(R.string.font_subtitle, thesisConmmit.getSubTitle()));
-                        mType.setText(getString(R.string.font_type, thesisConmmit.getType()));
-                        mOrigin.setText(getString(R.string.font_origin, thesisConmmit.getOrigin()));
-                        mTeacherName.setText(getString(R.string.font_teacher_name, thesisConmmit.getName()));
-                        mTeacherPhone.setText(getString(R.string.font_teacher_phone, thesisConmmit.getPhone()));
-                        mTeacherEmail.setText(getString(R.string.font_teacher_email, thesisConmmit.getEmail()));
-                        mTeacherTitle.setText(getString(R.string.font_teacher_title, thesisConmmit.getTitle()));
-                        mNumber.setText(getString(R.string.font_number, thesisConmmit.getNumber()));
-                        mDepartment.setText(getString(R.string.font_department, thesisConmmit.getDepartment()));
-                        mContent.setText(getString(R.string.font_content, thesisConmmit.getContent()));
+                    public void onResponse(ThesisResult thesisResult) {
+                        mMainTitle.setText(thesisResult.getTitle());
+                        mSubTitle.setText(getString(R.string.font_subtitle, thesisResult.getSubtitle()));
+                        mType.setText(getString(R.string.font_type, thesisResult.getType()));
+                        mOrigin.setText(getString(R.string.font_origin, thesisResult.getOrigin()));
+                        mTeacherName.setText(getString(R.string.font_teacher_name, thesisResult.getTeacher().getName()));
+                        mTeacherPhone.setText(getString(R.string.font_teacher_phone, thesisResult.getTeacher().getPhone()));
+                        mTeacherEmail.setText(getString(R.string.font_teacher_email, thesisResult.getTeacher().getEmail()));
+                        mTeacherTitle.setText(getString(R.string.font_teacher_title, thesisResult.getTeacher().getTitle()));
+                        mNumber.setText(getString(R.string.font_number, thesisResult.getNumbers()));
+                        mDepartment.setText(getString(R.string.font_department, thesisResult.getDep().getName()));
+                        mContent.setText(getString(R.string.font_content, thesisResult.getContent()));
                     }
                 }, new Response.ErrorListener() {
                     @Override

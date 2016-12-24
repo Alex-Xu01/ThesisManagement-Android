@@ -111,19 +111,19 @@ public class UserCenterFragment extends Fragment {
 
     private void setView() {
         Map<String, String> map = new HashMap<>();
-        map.put("username", CacheTool.get("username"));
-
+        map.put("studentId", CacheTool.get("studentId"));
+        map.put("android","1");
         VolleyManager.newInstance().GsonPostRequest(TAG, map, Urls.URL_USER_INFO, UserInfo.class,
                 new Response.Listener<UserInfo>() {
                     @Override
                     public void onResponse(UserInfo userInfo) {
-                        imgUrl = userInfo.getImgUrl();
+                        imgUrl = userInfo.getPicPath();
                         name = userInfo.getName();
-                        sex = userInfo.getSex();
+                        sex = userInfo.getGender();
                         phone = userInfo.getPhone();
                         email = userInfo.getEmail();
                         nameTextView.setText(name);
-                        depTextView.setText(userInfo.getDep());
+                        depTextView.setText(userInfo.getDep().getName());
                         getViewHead();
                     }
                 }, new Response.ErrorListener() {
@@ -148,5 +148,11 @@ public class UserCenterFragment extends Fragment {
                     }
                 });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setView();
     }
 }

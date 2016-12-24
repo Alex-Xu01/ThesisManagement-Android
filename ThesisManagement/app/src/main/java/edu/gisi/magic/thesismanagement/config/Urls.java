@@ -6,26 +6,22 @@ package edu.gisi.magic.thesismanagement.config;
 
 public class Urls {
 
-    private static final String IP = "http://192.168.1.6:8080/";
-    private static final String urlPre = IP + "/GTMS";
+    private static final String IP = "http://192.168.1.6:8080";
 
-    public static final String URL_USER_REGISTER = createUrl("/user/register");
-    public static final String URL_USER_LOGIN = createUrl("/user/login");
+    public static final String URL_GENERAL = createUrl("/queryNumbers");
 
-    //TODO 实现了获取已审核通过以及未满的论文数之后修改
-    public static final String URL_GENERAL = "http://www.mocky.io/v2/584c46bc120000b11f372b0d";
+    public static final String URL_USER_LOGIN = createUrl("/LoginAct");
+    public static final String URL_USER_INFO = createUrl("/showStudentInfo");
+    public static final String URL_USER_CHANGE_INFO = createUrl("/editStudentAct");
+    public static final String URL_USER_CHANGE_PASSWORD = createUrl("/editAccountAct");
 
-    public static final String URL_TYPE_QUERY_ALL = createUrl("/type/queryAll");
-    public static final String URL_TYPE_QUERY_ALL_ACTIVITY = createUrl("/type/queryAllActivity");
-
-    public static final String URL_THESIS = "http://www.mocky.io/v2/585ab7280f00001312161867";
-    public static final String URL_ORDER_ADD = createUrl("/order/addOrder");
-    public static final String URL_ORDER_QUERY_BY_USERNAME = createUrl("/order/queryByUserId");
-
-    public static final String URL_USER_INFO = "http://www.mocky.io/v2/5858e670240000f5027c59f6";
+    public static final String URL_MY_THESIS = createUrl("/showChoose");
+    public static final String URL_THESIS_ALL = createUrl("/queryAllPassPapers");
+    public static final String URL_THESIS = createUrl("/choosePaperPre");
+    public static final String URL_THESIS_ADD = createUrl("/choosePaperAct");
 
     private static String createUrl(String urlInfo) {
-        return String.format("%s%s", urlPre, urlInfo);
+        return String.format("%s%s", IP, urlInfo);
     }
 
 }
