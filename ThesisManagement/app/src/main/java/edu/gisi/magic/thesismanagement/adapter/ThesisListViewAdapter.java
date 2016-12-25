@@ -76,7 +76,6 @@ public class ThesisListViewAdapter extends BaseAdapter {
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO 跳转到详情页
                 if (TypeFragment.getFragTag() == 0) {
                     ThesisDetailActivity.startAc(mContext,String.valueOf(thesisResult.getId()),false);
                 } else if (TypeFragment.getFragTag() == 1) {

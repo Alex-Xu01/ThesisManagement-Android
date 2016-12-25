@@ -102,9 +102,10 @@ public class ThesisDetailActivity extends Activity {
                             new Response.Listener<ThesisResult>() {
                                 @Override
                                 public void onResponse(ThesisResult thesisResult) {
-                                    if (thesisResult.isResult())
+                                    if (thesisResult.isResult()) {
                                         Toast.makeText(getApplicationContext(), "选题成功", Toast.LENGTH_LONG).show();
-                                    else
+                                        finish();
+                                    } else
                                         Toast.makeText(getApplicationContext(), "选题失败", Toast.LENGTH_LONG).show();
                                 }
                             }, new Response.ErrorListener() {
