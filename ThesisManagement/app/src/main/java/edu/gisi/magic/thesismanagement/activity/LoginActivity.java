@@ -101,7 +101,7 @@ public class LoginActivity extends Activity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "登录失败，用户名或密码错误", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "登录失败，服务器链接超时", Toast.LENGTH_LONG).show();
                         Log.e(TAG, error.getMessage(), error);
                     }
                 });

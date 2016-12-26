@@ -6,7 +6,8 @@ package edu.gisi.magic.thesismanagement.config;
 
 public class Urls {
 
-    private static final String IP = "http://www.xulihui.top:8080/ThesisManagement-Java_war";
+    //    private static final String IP = "http://www.xulihui.top:8080";
+    private static final String IP = "http://192.168.1.3:8080";
 
     public static final String URL_GENERAL = createUrl("/queryNumbers");
 
